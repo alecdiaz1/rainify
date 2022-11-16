@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
+import { Player } from 'features/player/components/Player'
 
 const ErrorFallback = () => {
   return (
@@ -25,6 +26,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <div className="h-screen">
         <Router>{children}</Router>
+        <Player />
       </div>
     </ErrorBoundary>
   )
