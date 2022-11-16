@@ -1,4 +1,4 @@
-import { Song } from '../types'
+import { Song } from 'features/songs/types'
 
 export const SongRow = (song: Song) => {
   return (

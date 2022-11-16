@@ -1,5 +1,5 @@
-import { Song } from '../types'
-import { SongRow } from './SongRow'
+import { Song } from 'features/songs/types'
+import { SongRow } from 'features/songs/components/SongRow'
 
 type SongListProps = {
   songs: Song[]

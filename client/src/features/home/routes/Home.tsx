@@ -1,5 +1,5 @@
-import { SongList } from '../../songs/components/SongList'
-import { Song } from '../../songs'
+import { SongList } from 'features/songs/components/SongList'
+import { Song } from 'features/songs'
 
 const EX_SONGS: Song[] = [
   {
