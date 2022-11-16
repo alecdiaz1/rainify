@@ -23,7 +23,9 @@ type AppProviderProps = {
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <Router>{children}</Router>
+      <div className="h-screen">
+        <Router>{children}</Router>
+      </div>
     </ErrorBoundary>
   )
 };

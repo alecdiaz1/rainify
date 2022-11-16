@@ -1,8 +1,8 @@
-import { Landing } from '../features/misc/routes'
+import { Home } from '../features/home/routes'
 
 export const publicRoutes = [
   {
     path: '/',
-    element: <Landing />,
+    element: <Home />,
   },
 ];
