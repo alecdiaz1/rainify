@@ -4,4 +4,4 @@ export type Song = {
   artist: string[];
   fileUrl: string;
   coverUrl: string;
-}
+};
