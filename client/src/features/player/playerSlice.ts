@@ -23,7 +23,28 @@ export const playerSlice = createSlice({
       state.playing = false;
     },
     setCurrentSong: (state, action: PayloadAction<number>) => {
+      if (state.queue.length > 0) {
+        const newPrevSong = state.queue[0];
+        const prevSong = state.history[state.history.length - 1];
+        if (!prevSong || !(newPrevSong === prevSong)) {
+          state.history.push(newPrevSong);
+        }
+      }
       state.queue[0] = action.payload;
+    },
+    gotoPreviousSong: (state) => {
+      if (state.history.length > 0) {
+        const newCurrentSong = state.history.pop();
+        // @ts-ignore
+        state.queue.unshift(newCurrentSong);
+      }
+    },
+    gotoNextSong: (state) => {
+      if (state.queue.length > 1) {
+        const newPrevSong = state.queue.shift();
+        // @ts-ignore
+        state.history.push(newPrevSong);
+      }
     },
     addToQueue: (state, action: PayloadAction<number>) => {
       state.queue.push(action.payload);
@@ -34,7 +55,14 @@ export const playerSlice = createSlice({
   },
 });
 
-export const { play, pause, setCurrentSong, addToQueue, removeFromQueue } =
-  playerSlice.actions;
+export const {
+  play,
+  pause,
+  setCurrentSong,
+  gotoPreviousSong,
+  gotoNextSong,
+  addToQueue,
+  removeFromQueue,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

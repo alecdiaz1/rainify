@@ -4,7 +4,7 @@ import {
   RiSkipBackFill,
   RiSkipForwardFill,
 } from 'react-icons/ri';
-import { play, pause } from '../playerSlice';
+import { play, pause, gotoPreviousSong, gotoNextSong } from '../playerSlice';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { RootState } from 'stores/store';
@@ -59,7 +59,11 @@ export const Player = () => {
           </div>
         </div>
         <div className="flex items-center">
-          <RiSkipBackFill size={32} style={{ cursor: 'pointer' }} />
+          <RiSkipBackFill
+            size={32}
+            style={{ cursor: 'pointer' }}
+            onClick={() => dispatch(gotoPreviousSong())}
+          />
           <div className="mx-4">
             {isPlaying ? (
               <RiPauseCircleFill
@@ -75,7 +79,11 @@ export const Player = () => {
               />
             )}
           </div>
-          <RiSkipForwardFill size={32} style={{ cursor: 'pointer' }} />
+          <RiSkipForwardFill
+            size={32}
+            style={{ cursor: 'pointer' }}
+            onClick={() => dispatch(gotoNextSong())}
+          />
         </div>
       </div>
       <div className="fixed bottom-0 bg-gray-600 h-2 w-full"></div>
