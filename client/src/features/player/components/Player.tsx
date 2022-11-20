@@ -47,7 +47,7 @@ export const Player = () => {
         </div>
       </div>
       <div className="absolute bottom-0 w-full">
-        <PlayerSeeker />
+        <PlayerSeeker hideThumb />
       </div>
     </div>
   );

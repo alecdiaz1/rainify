@@ -1,0 +1,16 @@
+.seeker {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    display: flex;
+}
+
+/*/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.seeker::-webkit-slider-thumb {
+    visibility: hidden;
+}
+
+/******** Firefox ********/
+.seeker::-moz-range-thumb {
+    visibility: hidden;
+}

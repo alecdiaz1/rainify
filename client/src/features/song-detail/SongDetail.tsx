@@ -30,7 +30,7 @@ export const SongDetail = () => {
       </div>
       <div className="flex flex-col justify-center items-center mx-4">
         <PlayerControls className="mt-2" />
-        <PlayerSeeker className="mt-2 w-full" />
+        <PlayerSeeker hideThumb={false} className="mt-2 w-full" />
       </div>
     </div>
   );
