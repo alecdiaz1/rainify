@@ -5,6 +5,8 @@ import { Player } from 'features/player/components/Player';
 import { Provider } from 'react-redux';
 import { store } from 'stores/store';
 import { AudioProvider } from 'providers/AudioProvider';
+import { Navbar } from 'components/Navbar';
+import { SongDetail } from 'features/song-detail/SongDetail';
 
 const ErrorFallback = () => {
   return (
@@ -30,9 +32,13 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <Provider store={store}>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <div className="h-screen">
-          <Router>{children}</Router>
-          <Player />
-          <AudioProvider />
+          <Router>
+            <Navbar />
+            <SongDetail />
+            <div className="mx-4">{children}</div>
+            <Player />
+            <AudioProvider />
+          </Router>
         </div>
       </ErrorBoundary>
     </Provider>

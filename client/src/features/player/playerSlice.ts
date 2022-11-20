@@ -4,12 +4,14 @@ interface PlayerState {
   playing: boolean;
   queue: number[];
   history: number[];
+  isSongDetailVisible: boolean;
 }
 
 const initialState: PlayerState = {
   playing: false,
   queue: [],
   history: [],
+  isSongDetailVisible: false,
 };
 
 export const playerSlice = createSlice({
@@ -55,6 +57,9 @@ export const playerSlice = createSlice({
     removeFromQueue: (state, action: PayloadAction<number>) => {
       state.queue = state.queue.filter((song) => song !== action.payload);
     },
+    setSongDetailVisible: (state) => {
+      state.isSongDetailVisible = !state.isSongDetailVisible;
+    },
   },
 });
 
@@ -66,6 +71,7 @@ export const {
   gotoNextSong,
   addToQueue,
   removeFromQueue,
+  setSongDetailVisible,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;
