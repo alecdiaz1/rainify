@@ -31,20 +31,23 @@ export const playerSlice = createSlice({
         }
       }
       state.queue[0] = action.payload;
+      state.playing = true;
     },
     gotoPreviousSong: (state) => {
-      if (state.history.length > 0) {
-        const newCurrentSong = state.history.pop();
-        // @ts-ignore
+      const newCurrentSong = state.history.pop();
+      if (newCurrentSong) {
         state.queue.unshift(newCurrentSong);
       }
+      state.playing = true;
     },
     gotoNextSong: (state) => {
       if (state.queue.length > 1) {
         const newPrevSong = state.queue.shift();
-        // @ts-ignore
-        state.history.push(newPrevSong);
+        if (newPrevSong) {
+          state.history.push(newPrevSong);
+        }
       }
+      state.playing = true;
     },
     addToQueue: (state, action: PayloadAction<number>) => {
       state.queue.push(action.payload);

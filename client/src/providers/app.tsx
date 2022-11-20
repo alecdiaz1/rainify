@@ -4,18 +4,17 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Player } from 'features/player/components/Player';
 import { Provider } from 'react-redux';
 import { store } from 'stores/store';
+import { AudioProvider } from 'providers/AudioProvider';
 
 const ErrorFallback = () => {
   return (
     <div
       className="text-red-500 w-screen h-screen flex flex-col justify-center items-center"
-      role="alert"
-    >
+      role="alert">
       <h2 className="text-lg font-semibold">Oops, something went wrong :( </h2>
       <button
         className="mt-4"
-        onClick={() => window.location.assign(window.location.origin)}
-      >
+        onClick={() => window.location.assign(window.location.origin)}>
         Refresh
       </button>
     </div>
@@ -33,6 +32,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         <div className="h-screen">
           <Router>{children}</Router>
           <Player />
+          <AudioProvider />
         </div>
       </ErrorBoundary>
     </Provider>
