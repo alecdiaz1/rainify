@@ -14,12 +14,12 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
 
-export const PlayerControls = () => {
+export const PlayerControls = ({ className }: { className?: string }) => {
   const isPlaying = useAppSelector((state: RootState) => state.player.playing);
   const dispatch = useAppDispatch();
 
   return (
-    <div className="flex items-center">
+    <div className={`flex items-center ${className}`}>
       <RiSkipBackFill
         size={32}
         style={{ cursor: 'pointer' }}

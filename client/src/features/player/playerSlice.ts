@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RefObject } from 'react';
 
 interface PlayerState {
   playing: boolean;
   queue: number[];
   history: number[];
   isSongDetailVisible: boolean;
+  currentSongRef: RefObject<HTMLAudioElement> | null;
 }
 
 const initialState: PlayerState = {
@@ -12,6 +14,7 @@ const initialState: PlayerState = {
   queue: [],
   history: [],
   isSongDetailVisible: false,
+  currentSongRef: null,
 };
 
 export const playerSlice = createSlice({
@@ -60,6 +63,9 @@ export const playerSlice = createSlice({
     setSongDetailVisible: (state) => {
       state.isSongDetailVisible = !state.isSongDetailVisible;
     },
+    setSongRef: (state, action: PayloadAction<RefObject<any>>) => {
+      state.currentSongRef = action.payload;
+    },
   },
 });
 
@@ -72,6 +78,7 @@ export const {
   addToQueue,
   removeFromQueue,
   setSongDetailVisible,
+  setSongRef,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

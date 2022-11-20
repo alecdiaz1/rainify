@@ -4,7 +4,8 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { RootState } from 'stores/store';
 import { SONGS } from 'songs';
 import { formatArtists } from 'utils/formatArtists';
-import { PlayerControls } from 'components/PlayerControls';
+import { PlayerControls } from './PlayerControls';
+import { PlayerSeeker } from './PlayerSeeker';
 
 export const Player = () => {
   const currentSongId = useAppSelector(
@@ -44,7 +45,9 @@ export const Player = () => {
             <PlayerControls />
           </div>
         </div>
-        <div className="absolute bottom-0 bg-gray-600 h-2 w-full"></div>
+      </div>
+      <div className="absolute bottom-0 w-full">
+        <PlayerSeeker />
       </div>
     </div>
   );
