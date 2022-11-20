@@ -1,24 +1,12 @@
-import {
-  RiPlayCircleFill,
-  RiPauseCircleFill,
-  RiSkipBackFill,
-  RiSkipForwardFill,
-} from 'react-icons/ri';
-import {
-  play,
-  pause,
-  gotoPreviousSong,
-  gotoNextSong,
-  setSongDetailVisible,
-} from '../playerSlice';
+import { setSongDetailVisible } from '../playerSlice';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { RootState } from 'stores/store';
 import { SONGS } from 'songs';
 import { formatArtists } from 'utils/formatArtists';
+import { PlayerControls } from 'components/PlayerControls';
 
 export const Player = () => {
-  const isPlaying = useAppSelector((state: RootState) => state.player.playing);
   const currentSongId = useAppSelector(
     (state: RootState) => state.player.queue[0],
   );
@@ -52,32 +40,8 @@ export const Player = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center">
-            <RiSkipBackFill
-              size={32}
-              style={{ cursor: 'pointer' }}
-              onClick={() => dispatch(gotoPreviousSong())}
-            />
-            <div className="mx-4">
-              {isPlaying ? (
-                <RiPauseCircleFill
-                  size={48}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => dispatch(pause())}
-                />
-              ) : (
-                <RiPlayCircleFill
-                  size={48}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => dispatch(play())}
-                />
-              )}
-            </div>
-            <RiSkipForwardFill
-              size={32}
-              style={{ cursor: 'pointer' }}
-              onClick={() => dispatch(gotoNextSong())}
-            />
+          <div>
+            <PlayerControls />
           </div>
         </div>
         <div className="absolute bottom-0 bg-gray-600 h-2 w-full"></div>

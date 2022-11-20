@@ -2,6 +2,7 @@ import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
 import { SONGS } from 'songs';
 import { formatArtists } from 'utils/formatArtists';
+import { PlayerControls } from 'components/PlayerControls';
 
 export const SongDetail = () => {
   const isVisible = useAppSelector(
@@ -25,6 +26,9 @@ export const SongDetail = () => {
         />
         <h1 className="font-bold mt-8">{currentSongInfo?.title}</h1>
         <h2>{formatArtists(currentSongInfo?.artist)}</h2>
+      </div>
+      <div className="flex justify-center">
+        <PlayerControls />
       </div>
     </div>
   );
