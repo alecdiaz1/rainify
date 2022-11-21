@@ -21,7 +21,7 @@ export const SongDetail = () => {
       }`}>
       <div className="flex flex-col mx-4">
         <img
-          className="aspect-square object-cover"
+          className="aspect-square object-cover rounded-lg"
           src={currentSongInfo?.coverUrl}
           alt={`${currentSongInfo?.title} album art`}
         />

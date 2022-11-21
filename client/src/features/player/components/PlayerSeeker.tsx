@@ -60,7 +60,7 @@ export const PlayerSeeker = ({
   } else {
     return (
       <input
-        className="bg-black h-2 cursor-pointer w-full mt-4"
+        className="bg-black cursor-pointer w-full mt-4"
         type="range"
         step="1"
         min="0"
