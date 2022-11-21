@@ -11,6 +11,7 @@ export const AudioContext = createContext<{
 
 export const AudioProvider = () => {
   const isPlaying = useAppSelector((state: RootState) => state.player.playing);
+  const volume = useAppSelector((state: RootState) => state.player.volume);
   const currentSongId = useAppSelector(
     (state: RootState) => state.player.queue[0],
   );
@@ -22,6 +23,7 @@ export const AudioProvider = () => {
     audioRef.current.pause();
     audioRef.current = new Audio(currentSongInfo?.fileUrl);
     audioContext.audioRef = audioRef;
+    audioRef.current.volume = volume;
     audioRef.current.play().then();
   }, [currentSongInfo]);
 

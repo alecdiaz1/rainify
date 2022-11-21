@@ -7,6 +7,7 @@ interface PlayerState {
   history: number[];
   isSongDetailVisible: boolean;
   currentSongRef: RefObject<HTMLAudioElement> | null;
+  volume: number;
 }
 
 const initialState: PlayerState = {
@@ -15,6 +16,7 @@ const initialState: PlayerState = {
   history: [],
   isSongDetailVisible: false,
   currentSongRef: null,
+  volume: 0.5,
 };
 
 export const playerSlice = createSlice({
@@ -63,8 +65,8 @@ export const playerSlice = createSlice({
     setSongDetailVisible: (state) => {
       state.isSongDetailVisible = !state.isSongDetailVisible;
     },
-    setSongRef: (state, action: PayloadAction<RefObject<any>>) => {
-      state.currentSongRef = action.payload;
+    setVolume: (state, action: PayloadAction<number>) => {
+      state.volume = action.payload;
     },
   },
 });
@@ -78,7 +80,7 @@ export const {
   addToQueue,
   removeFromQueue,
   setSongDetailVisible,
-  setSongRef,
+  setVolume,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

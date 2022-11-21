@@ -19,7 +19,7 @@ export const PlayerControls = ({ className }: { className?: string }) => {
   const dispatch = useAppDispatch();
 
   return (
-    <div className={`flex items-center ${className}`}>
+    <div className={`flex items-center justify-between ${className || ''}`}>
       <RiSkipBackFill
         size={32}
         style={{ cursor: 'pointer' }}

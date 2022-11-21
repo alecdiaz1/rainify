@@ -29,7 +29,7 @@ export const SongDetail = () => {
         <h2>{formatArtists(currentSongInfo?.artist)}</h2>
       </div>
       <div className="flex flex-col justify-center items-center mx-4">
-        <PlayerControls className="mt-2" />
+        <PlayerControls className="mt-2 w-40" />
         <PlayerSeeker hideThumb={false} className="mt-2 w-full" />
       </div>
     </div>
