@@ -28,4 +28,12 @@ export const SONGS: Song[] = [
     coverUrl:
       'https://image.petmd.com/files/styles/863x625/public/2022-06/rat.blanket.jpg',
   },
+  {
+    id: 4,
+    title: 'ICE CREAM (2 SWEET 4 ME)',
+    artist: ['Mia Beyern'],
+    fileUrl: 'https://nopixel-rainify.s3.amazonaws.com/songs/ICE_CREAM.wav',
+    coverUrl:
+      'https://media.discordapp.net/attachments/993354140535238687/1043887202989527061/IceCream-CoverArt-4000x4000-300-WEBCOMPRESS.jpg?width=810&height=810',
+  },
 ];
