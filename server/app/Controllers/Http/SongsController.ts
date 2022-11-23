@@ -25,11 +25,12 @@ export default class SongsController {
     return { songInfo }
   }
 
-  public async incrementPlays({ request }: HttpContextContract) {
+  public async addPlay({ request }: HttpContextContract) {
     const songId = request.param('id')
     const song = await Song.find(songId)
     if (song) {
       song.plays = song.plays + 1
+      await song.save()
       return song.plays
     }
   }

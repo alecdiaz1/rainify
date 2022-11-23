@@ -44,6 +44,9 @@ export const playerSlice = createSlice({
       state.currentSongInfo = action.payload;
       state.playing = true;
     },
+    addPlayToSong: (state, action: PayloadAction<Song>) => {
+      fetch(`http://127.0.0.1:3333/songs/${action.payload.id}/add-play`).then();
+    },
     gotoPreviousSong: (state) => {
       const newCurrentSong = state.history.pop();
       if (newCurrentSong) {
@@ -79,6 +82,7 @@ export const {
   play,
   pause,
   setCurrentSong,
+  addPlayToSong,
   gotoPreviousSong,
   gotoNextSong,
   addToQueue,

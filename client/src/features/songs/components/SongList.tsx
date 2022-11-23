@@ -11,6 +11,7 @@ export const SongList = ({ songs }: SongListProps) => {
       {songs.map((song) => (
         <SongRow
           id={song.id}
+          key={song.id}
           title={song.title}
           artist={song.artist}
           fileUrl={song.fileUrl}

@@ -6,7 +6,6 @@ export default class extends BaseSeeder {
     await Song.createMany([
       {
         title: 'long distance',
-        // @ts-ignore
         artist_id: 1,
         plays: 0,
         song_url: 'https://nopixel-rainify.s3.amazonaws.com/songs/niko+rain+-+long+distance.mp3',
@@ -15,8 +14,7 @@ export default class extends BaseSeeder {
       },
       {
         title: 'ICE CREAM (2 SWEET 4 ME)',
-        // @ts-ignore
-        artist_id: 3,
+        artist_id: 2,
         plays: 1,
         song_url: 'https://nopixel-rainify.s3.amazonaws.com/songs/ICE_CREAM.wav',
         album_art_url:
@@ -24,8 +22,7 @@ export default class extends BaseSeeder {
       },
       {
         title: 'Sex Drive',
-        // @ts-ignore
-        artist_id: 4,
+        artist_id: 3,
         plays: 2,
         song_url: 'https://nopixel-rainify.s3.amazonaws.com/songs/BIMBOS+-+Sex+Drive.mp3',
         album_art_url:

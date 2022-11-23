@@ -9,7 +9,7 @@ export const Player = () => {
   const currentSongInfo = useAppSelector(
     (state: RootState) => state.player.currentSongInfo,
   );
-  const isPlayerVisible = currentSongInfo !== undefined;
+  const isPlayerVisible = !!currentSongInfo;
   const dispatch = useAppDispatch();
 
   return (
