@@ -7,7 +7,7 @@ export default class SongsController {
     const songs = await Database.from('songs')
       .join('users', 'songs.artist_id', '=', 'users.id')
       .select({
-        id: 'users.id',
+        id: 'songs.id',
         title: 'title',
         artist: 'users.name',
         plays: 'plays',
