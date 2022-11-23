@@ -7,7 +7,7 @@ import { PlayerSeeker } from './PlayerSeeker';
 
 export const Player = () => {
   const currentSongInfo = useAppSelector(
-    (state: RootState) => state.player.currentSongInfo,
+    (state: RootState) => state.player.queue[0],
   );
   const isPlayerVisible = !!currentSongInfo;
   const dispatch = useAppDispatch();

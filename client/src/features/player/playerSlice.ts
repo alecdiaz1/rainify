@@ -4,11 +4,10 @@ import { Song } from 'features/songs';
 
 interface PlayerState {
   playing: boolean;
-  queue: number[];
-  history: number[];
+  queue: Song[];
+  history: Song[];
   isSongDetailVisible: boolean;
   currentSongRef: RefObject<HTMLAudioElement> | null;
-  currentSongInfo: Song | null;
   volume: number;
 }
 
@@ -19,7 +18,6 @@ const initialState: PlayerState = {
   isSongDetailVisible: false,
   currentSongRef: null,
   volume: 0.5,
-  currentSongInfo: null,
 };
 
 export const playerSlice = createSlice({
@@ -40,8 +38,7 @@ export const playerSlice = createSlice({
           state.history.push(newPrevSong);
         }
       }
-      state.queue[0] = action.payload.id;
-      state.currentSongInfo = action.payload;
+      state.queue[0] = action.payload;
       state.playing = true;
     },
     gotoPreviousSong: (state) => {
@@ -60,10 +57,10 @@ export const playerSlice = createSlice({
       }
       state.playing = true;
     },
-    addToQueue: (state, action: PayloadAction<number>) => {
+    addToQueue: (state, action: PayloadAction<Song>) => {
       state.queue.push(action.payload);
     },
-    removeFromQueue: (state, action: PayloadAction<number>) => {
+    removeFromQueue: (state, action: PayloadAction<Song>) => {
       state.queue = state.queue.filter((song) => song !== action.payload);
     },
     setSongDetailVisible: (state) => {

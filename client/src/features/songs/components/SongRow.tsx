@@ -9,7 +9,7 @@ import { RootState } from 'stores/store';
 export const SongRow = (song: Song) => {
   const dispatch = useAppDispatch();
   const currentSongId = useAppSelector(
-    (state: RootState) => state?.player?.currentSongInfo?.id,
+    (state: RootState) => state.player.queue[0]?.id,
   );
 
   const [plays, setPlays] = useState(song.plays);

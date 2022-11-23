@@ -8,7 +8,7 @@ export const SongDetail = () => {
     (state: RootState) => state.player.isSongDetailVisible,
   );
   const currentSongInfo = useAppSelector(
-    (state: RootState) => state.player.currentSongInfo,
+    (state: RootState) => state.player.queue[0],
   );
 
   return (
