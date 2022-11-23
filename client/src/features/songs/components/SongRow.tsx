@@ -24,7 +24,9 @@ export const SongRow = (song: Song) => {
 
   return (
     <div
-      className="rounded-md border-2 flex cursor-pointer"
+      className={`rounded-md border-2 flex cursor-pointer overflow-hidden ${
+        currentSongId === song.id ? 'bg-gray-50' : ''
+      }`}
       onClick={() => onClick(song)}>
       <img
         className="aspect-square w-16 object-cover"
