@@ -36,4 +36,13 @@ export const SONGS: Song[] = [
     coverUrl:
       'https://media.discordapp.net/attachments/993354140535238687/1043887202989527061/IceCream-CoverArt-4000x4000-300-WEBCOMPRESS.jpg?width=810&height=810',
   },
+  {
+    id: 5,
+    title: 'Sex Drive',
+    artist: ['BIMBOS'],
+    fileUrl:
+      'https://nopixel-rainify.s3.amazonaws.com/songs/BIMBOS+-+Sex+Drive.mp3',
+    coverUrl:
+      'https://cdn.discordapp.com/attachments/931466656557989908/1044555497673601135/tAih7wO.jpg',
+  },
 ];
