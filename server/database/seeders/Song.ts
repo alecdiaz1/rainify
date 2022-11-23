@@ -14,7 +14,7 @@ export default class extends BaseSeeder {
       },
       {
         title: 'ICE CREAM (2 SWEET 4 ME)',
-        artist_id: 2,
+        artist_id: 3,
         plays: 1,
         song_url: 'https://nopixel-rainify.s3.amazonaws.com/songs/ICE_CREAM.wav',
         album_art_url:
@@ -22,7 +22,7 @@ export default class extends BaseSeeder {
       },
       {
         title: 'Sex Drive',
-        artist_id: 3,
+        artist_id: 4,
         plays: 2,
         song_url: 'https://nopixel-rainify.s3.amazonaws.com/songs/BIMBOS+-+Sex+Drive.mp3',
         album_art_url:

@@ -5,7 +5,7 @@ export const Home = () => {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:3333/songs')
+    fetch(`${process.env.REACT_APP_API_URL}/songs`)
       .then((res) => res.json())
       .then((data) => {
         setSongs(data.songs);

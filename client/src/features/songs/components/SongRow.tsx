@@ -1,6 +1,6 @@
 import { Song } from 'features/songs/types';
 import { useAppDispatch } from 'hooks/useAppDispatch';
-import { addPlayToSong, setCurrentSong } from 'features/player/playerSlice';
+import { setCurrentSong } from 'features/player/playerSlice';
 import { RiPlayFill } from 'react-icons/ri';
 import { useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
@@ -14,11 +14,10 @@ export const SongRow = (song: Song) => {
 
   const [plays, setPlays] = useState(song.plays);
 
-  // TODO: Optimistic update, but only update server-side if listened to >= 30 seconds
   const onClick = (song: Song) => {
     if (song.id !== currentSongId) {
       dispatch(setCurrentSong(song));
-      dispatch(addPlayToSong(song));
+      // Optimistic update, actual update happens in AudioProvider
       setPlays(plays + 1);
     }
   };

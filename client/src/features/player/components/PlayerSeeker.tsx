@@ -30,7 +30,7 @@ export const PlayerSeeker = ({
 
   useEffect(() => {
     startTimer();
-  }, [audioRef]);
+  });
 
   if (hideThumb) {
     return (
