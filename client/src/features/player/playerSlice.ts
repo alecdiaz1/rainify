@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RefObject } from 'react';
+import { Song } from 'features/songs';
 
 interface PlayerState {
   playing: boolean;
@@ -7,6 +8,7 @@ interface PlayerState {
   history: number[];
   isSongDetailVisible: boolean;
   currentSongRef: RefObject<HTMLAudioElement> | null;
+  currentSongInfo: Song | null;
   volume: number;
 }
 
@@ -17,6 +19,7 @@ const initialState: PlayerState = {
   isSongDetailVisible: false,
   currentSongRef: null,
   volume: 0.5,
+  currentSongInfo: null,
 };
 
 export const playerSlice = createSlice({
@@ -29,7 +32,7 @@ export const playerSlice = createSlice({
     pause: (state) => {
       state.playing = false;
     },
-    setCurrentSong: (state, action: PayloadAction<number>) => {
+    setCurrentSong: (state, action: PayloadAction<Song>) => {
       if (state.queue.length > 0) {
         const newPrevSong = state.queue[0];
         const prevSong = state.history[state.history.length - 1];
@@ -37,7 +40,8 @@ export const playerSlice = createSlice({
           state.history.push(newPrevSong);
         }
       }
-      state.queue[0] = action.payload;
+      state.queue[0] = action.payload.id;
+      state.currentSongInfo = action.payload;
       state.playing = true;
     },
     gotoPreviousSong: (state) => {

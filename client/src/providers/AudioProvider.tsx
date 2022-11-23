@@ -1,6 +1,5 @@
 import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
-import { SONGS } from 'songs';
 import React, { createContext, useContext, useEffect, useRef } from 'react';
 
 export const AudioContext = createContext<{
@@ -12,10 +11,9 @@ export const AudioContext = createContext<{
 export const AudioProvider = () => {
   const isPlaying = useAppSelector((state: RootState) => state.player.playing);
   const volume = useAppSelector((state: RootState) => state.player.volume);
-  const currentSongId = useAppSelector(
-    (state: RootState) => state.player.queue[0],
+  const currentSongInfo = useAppSelector(
+    (state: RootState) => state.player.currentSongInfo,
   );
-  const currentSongInfo = SONGS.find((song) => song.id === currentSongId);
   const audioRef = useRef(new Audio(currentSongInfo?.fileUrl));
   const audioContext = useContext(AudioContext);
 

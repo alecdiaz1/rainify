@@ -20,6 +20,6 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get('/songs', 'SongsController.index')
+Route.get('/songs/:id', 'SongsController.show')
+Route.get('/songs/:id/add-play', 'SongsController.addPlay')

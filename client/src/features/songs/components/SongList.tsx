@@ -15,6 +15,7 @@ export const SongList = ({ songs }: SongListProps) => {
           artist={song.artist}
           fileUrl={song.fileUrl}
           coverUrl={song.coverUrl}
+          plays={song.plays}
         />
       ))}
     </div>
