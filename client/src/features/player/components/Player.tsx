@@ -4,6 +4,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { RootState } from 'stores/store';
 import { PlayerControls } from './PlayerControls';
 import { PlayerSeeker } from './PlayerSeeker';
+import { formatArtists } from 'utils/formatArtists';
 
 export const Player = () => {
   const currentSongInfo = useAppSelector(
@@ -22,7 +23,7 @@ export const Player = () => {
           <div className="flex">
             <img
               className="aspect-square w-20 object-cover mr-4"
-              src={currentSongInfo?.coverUrl}
+              src={currentSongInfo?.albumArtUrl}
               alt={currentSongInfo?.title + ' album art'}
             />
             <div>
@@ -32,7 +33,9 @@ export const Player = () => {
                   onClick={() => dispatch(setSongDetailVisible())}>
                   {currentSongInfo?.title}
                 </p>
-                <p className="text-slate-400">{currentSongInfo?.artist}</p>
+                <p className="text-slate-400">
+                  {formatArtists(currentSongInfo?.artists)}
+                </p>
               </div>
             </div>
           </div>

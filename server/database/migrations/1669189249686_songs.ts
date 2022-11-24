@@ -13,7 +13,6 @@ export default class extends BaseSchema {
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
       table.string('title')
-      table.integer('artist_id')
       table.integer('plays')
       table.string('song_url')
       table.string('album_art_url')

@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import User from 'App/Models/User'
 
 export default class Song extends BaseModel {
   @column({ isPrimary: true })
@@ -15,9 +16,6 @@ export default class Song extends BaseModel {
   public title: string
 
   @column()
-  public artist_id: number
-
-  @column()
   public plays: number
 
   @column({ serializeAs: 'fileUrl' })
@@ -25,4 +23,9 @@ export default class Song extends BaseModel {
 
   @column({ serializeAs: 'coverUrl' })
   public album_art_url: string
+
+  @manyToMany(() => User, {
+    pivotTable: 'user_song',
+  })
+  public artists: ManyToMany<typeof User>
 }

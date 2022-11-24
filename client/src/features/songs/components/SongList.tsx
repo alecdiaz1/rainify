@@ -13,9 +13,9 @@ export const SongList = ({ songs }: SongListProps) => {
           id={song.id}
           key={song.id}
           title={song.title}
-          artist={song.artist}
-          fileUrl={song.fileUrl}
-          coverUrl={song.coverUrl}
+          artists={song.artists}
+          songUrl={song.songUrl}
+          albumArtUrl={song.albumArtUrl}
           plays={song.plays}
         />
       ))}

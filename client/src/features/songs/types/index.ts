@@ -1,8 +1,8 @@
 export type Song = {
   id: number;
   title: string;
-  artist: string[];
-  fileUrl: string;
-  coverUrl: string;
+  artists: object[];
+  songUrl: string;
+  albumArtUrl: string;
   plays: number;
 };

@@ -5,6 +5,7 @@ import { RiPlayFill } from 'react-icons/ri';
 import { useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
+import { formatArtists } from 'utils/formatArtists';
 
 export const SongRow = (song: Song) => {
   const dispatch = useAppDispatch();
@@ -30,12 +31,12 @@ export const SongRow = (song: Song) => {
       onClick={() => onClick(song)}>
       <img
         className="aspect-square w-16 object-cover"
-        src={song.coverUrl}
+        src={song.albumArtUrl}
         alt={song.title + ' album art'}
       />
       <div className="ml-4 my-2">
         <p className="">{song.title}</p>
-        <p className="text-sm text-slate-400">{song.artist}</p>
+        <p className="text-sm text-slate-400">{formatArtists(song.artists)}</p>
         <div className="flex">
           <RiPlayFill className="-ml-1 mr-1" />
           <p className="text-xs text-slate-400">{plays}</p>

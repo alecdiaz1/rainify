@@ -1,3 +1,3 @@
-export const formatArtists = (artists: string[] | undefined) => {
-  return artists?.join(', ');
+export const formatArtists = (artists: object[] | undefined) => {
+  return Object.values(artists || []).join(', ');
 };
