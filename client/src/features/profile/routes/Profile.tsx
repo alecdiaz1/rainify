@@ -16,7 +16,7 @@ export const Profile = () => {
       setSongs(res.data.songs);
       setArtistName(res.data.artistName);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
