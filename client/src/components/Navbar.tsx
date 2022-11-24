@@ -32,9 +32,9 @@ export const Navbar = () => {
           <RiArrowDropLeftLine size={48} className="-ml-4" />
         </Link>
       )}
-      <h2 className="text-3xl text-center my-4 col-start-2 col-end-2">
-        rainify
-      </h2>
+      <Link to="/" className="my-4 col-start-2 col-end-2">
+        <h2 className="text-3xl text-center">rainify</h2>
+      </Link>
       <div className="flex justify-center items-center">
         <RiVolumeDownFill size={32} className="mr-2" />
         <VolumeSlider />

@@ -8,7 +8,7 @@ export default class extends BaseSeeder {
         name: 'niko rain',
       },
       {
-        name: 'saint noelle',
+        name: 'SAINT NOELLE',
       },
       {
         name: 'Mia Beyern',
