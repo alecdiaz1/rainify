@@ -24,6 +24,10 @@ export default class extends BaseSeeder {
         user_id: 2,
         song_id: 4,
       },
+      {
+        user_id: 2,
+        song_id: 5,
+      },
     ])
   }
 }

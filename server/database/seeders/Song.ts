@@ -8,8 +8,7 @@ export default class extends BaseSeeder {
         title: 'long distance',
         plays: 0,
         song_url: 'https://nopixel-rainify.s3.amazonaws.com/songs/niko+rain+-+long+distance.mp3',
-        album_art_url:
-          'https://image.petmd.com/files/styles/863x625/public/2022-06/rat.blanket.jpg',
+        album_art_url: 'https://i1.sndcdn.com/artworks-XcwUdSsqaZafJL5W-QCOPyA-t500x500.jpg',
       },
       {
         title: 'ICE CREAM (2 SWEET 4 ME)',
@@ -31,6 +30,13 @@ export default class extends BaseSeeder {
         song_url:
           'https://nopixel-rainify.s3.amazonaws.com/songs/niko+rain+x+saint+noelle+-+SUBMIT.mp3',
         album_art_url: 'https://i1.sndcdn.com/artworks-6Dmy53azzcGLDZtW-styzhA-t500x500.jpg',
+      },
+      {
+        title: 'RATHER BE LONELY',
+        plays: 0,
+        song_url:
+          'https://nopixel-rainify.s3.amazonaws.com/songs/Rather+Be+Lonely+-+Saint+Noelle.mp3',
+        album_art_url: 'https://i1.sndcdn.com/artworks-8xX72iHqeLODTEbv-09mDDw-t500x500.jpg',
       },
     ])
   }
