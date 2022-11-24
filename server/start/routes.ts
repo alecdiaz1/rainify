@@ -24,4 +24,5 @@ Route.group(() => {
   Route.get('/songs', 'SongsController.index')
   Route.get('/songs/:id', 'SongsController.show')
   Route.get('/songs/:id/add-play', 'SongsController.addPlay')
+  Route.get('/users/:id', 'UsersController.show')
 }).prefix('/api')

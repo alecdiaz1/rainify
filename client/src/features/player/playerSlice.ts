@@ -63,8 +63,8 @@ export const playerSlice = createSlice({
     removeFromQueue: (state, action: PayloadAction<Song>) => {
       state.queue = state.queue.filter((song) => song !== action.payload);
     },
-    setSongDetailVisible: (state) => {
-      state.isSongDetailVisible = !state.isSongDetailVisible;
+    setSongDetailVisible: (state, action: PayloadAction<boolean>) => {
+      state.isSongDetailVisible = action.payload;
     },
     setVolume: (state, action: PayloadAction<number>) => {
       state.volume = action.payload;

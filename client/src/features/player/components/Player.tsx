@@ -4,6 +4,8 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { RootState } from 'stores/store';
 import { PlayerControls } from './PlayerControls';
 import { PlayerSeeker } from './PlayerSeeker';
+import { Link } from 'react-router-dom';
+import { ArtistList } from 'components/ArtistList';
 
 export const Player = () => {
   const currentSongInfo = useAppSelector(
@@ -22,17 +24,20 @@ export const Player = () => {
           <div className="flex">
             <img
               className="aspect-square w-20 object-cover mr-4"
-              src={currentSongInfo?.coverUrl}
+              src={currentSongInfo?.albumArtUrl}
               alt={currentSongInfo?.title + ' album art'}
             />
             <div>
               <div className="-mt-1">
                 <p
                   className="text-lg cursor-pointer"
-                  onClick={() => dispatch(setSongDetailVisible())}>
+                  onClick={() => dispatch(setSongDetailVisible(true))}>
                   {currentSongInfo?.title}
                 </p>
-                <p className="text-slate-400">{currentSongInfo?.artist}</p>
+                <ArtistList
+                  className="text-base -mt-2"
+                  artists={currentSongInfo ? currentSongInfo.artists : []}
+                />
               </div>
             </div>
           </div>

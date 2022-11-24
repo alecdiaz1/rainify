@@ -22,7 +22,7 @@ export const AudioProvider = () => {
   const currentSongInfo = useAppSelector(
     (state: RootState) => state.player.queue[0],
   );
-  const audioRef = useRef(new Audio(currentSongInfo?.fileUrl));
+  const audioRef = useRef(new Audio(currentSongInfo?.songUrl));
   const audioContext = useContext(AudioContext);
 
   const [seconds, setSeconds] = useState(COUNT_PLAY_SECONDS_THRESHOLD);
@@ -49,7 +49,7 @@ export const AudioProvider = () => {
 
   useEffect(() => {
     audioRef.current.pause();
-    audioRef.current = new Audio(currentSongInfo?.fileUrl);
+    audioRef.current = new Audio(currentSongInfo?.songUrl);
     audioContext.audioRef = audioRef;
     audioRef.current.volume = volume;
     audioRef.current.play().then();

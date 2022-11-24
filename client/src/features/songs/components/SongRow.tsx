@@ -5,6 +5,7 @@ import { RiPlayFill } from 'react-icons/ri';
 import { useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
+import { ArtistList } from 'components/ArtistList';
 
 export const SongRow = (song: Song) => {
   const dispatch = useAppDispatch();
@@ -29,14 +30,16 @@ export const SongRow = (song: Song) => {
       }`}
       onClick={() => onClick(song)}>
       <img
-        className="aspect-square w-16 object-cover"
-        src={song.coverUrl}
+        className="aspect-square w-20 object-cover"
+        src={song.albumArtUrl}
         alt={song.title + ' album art'}
       />
       <div className="ml-4 my-2">
         <p className="">{song.title}</p>
-        <p className="text-sm text-slate-400">{song.artist}</p>
-        <div className="flex">
+        <div className="flex -mt-1" onClick={(e) => e.stopPropagation()}>
+          <ArtistList artists={song.artists} />
+        </div>
+        <div className="flex mt-2">
           <RiPlayFill className="-ml-1 mr-1" />
           <p className="text-xs text-slate-400">{plays}</p>
         </div>

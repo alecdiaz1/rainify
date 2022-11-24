@@ -1,5 +1,6 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import Song from 'App/Models/Song'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -13,4 +14,9 @@ export default class User extends BaseModel {
 
   @column()
   public name: string
+
+  @manyToMany(() => Song, {
+    pivotTable: 'user_song',
+  })
+  public songs: ManyToMany<typeof Song>
 }
