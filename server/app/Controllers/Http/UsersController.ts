@@ -25,9 +25,10 @@ export default class SongsController {
         '\tuser_song\n' +
         'JOIN songs on songs.id = user_song.song_id\n' +
         'JOIN users on users.id = user_song.user_id\n' +
-        `WHERE songs.id IN (${userSongIds})\n` +
+        `WHERE songs.id = ANY (?)\n` +
         'GROUP BY songs.id\n' +
-        'ORDER BY songs.id'
+        'ORDER BY songs.id',
+      [userSongIds]
     )
 
     return { songs: userSongsQuery.rows, artistName: user?.name }

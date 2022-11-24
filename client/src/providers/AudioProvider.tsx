@@ -28,6 +28,8 @@ export const AudioProvider = () => {
   const [seconds, setSeconds] = useState(COUNT_PLAY_SECONDS_THRESHOLD);
   const [currentSongCounted, setCurrentSongCounted] = useState(false);
 
+  // TODO: automatically go to next song when end, or pick a random one
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (isPlaying) {
