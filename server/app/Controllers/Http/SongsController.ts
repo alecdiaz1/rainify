@@ -4,24 +4,23 @@ import Database from '@ioc:Adonis/Lucid/Database'
 
 export default class SongsController {
   public async index() {
-    const songs = await Database.rawQuery(
-      'SELECT\n' +
-        's.id,\n' +
-        's.title,\n' +
-        's.plays,\n' +
-        's.song_url,\n' +
-        's.album_art_url,\n' +
-        'jsonb_object_agg(u.id, u.name) AS artists\n' +
-        'FROM songs s\n' +
-        'LEFT JOIN user_song artistsong\n' +
-        'ON s.id = artistsong.song_id\n' +
-        'LEFT JOIN users u\n' +
-        'ON artistsong.user_id = u.id\n' +
-        'GROUP BY s.id\n' +
-        'ORDER BY s.id'
-    )
+    // prettier-ignore
+    const allSongs = await Database
+      .from('user_song')
+      .select(
+        'songs.id',
+        'songs.title',
+        'songs.song_url',
+        'songs.album_art_url',
+        'songs.plays',
+        Database.raw('jsonb_object_agg(users.id, users.name) AS artists')
+      )
+      .join('songs', 'songs.id', '=', 'user_song.song_id')
+      .join('users', 'users.id', '=', 'user_song.user_id')
+      .groupBy('songs.id')
+      .orderBy('songs.id')
 
-    return { songs: songs.rows }
+    return { songs: allSongs }
   }
 
   public async show({ request }: HttpContextContract) {

@@ -18,7 +18,6 @@ export default class SongsController {
         'songs.plays',
         Database.raw('jsonb_object_agg(users.id, users.name) AS artists')
       )
-      .from('user_song')
       .join('songs', 'songs.id', '=', 'user_song.song_id')
       .join('users', 'users.id', '=', 'user_song.user_id')
       .whereIn(
