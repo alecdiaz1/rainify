@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RefObject } from 'react';
 import { Song } from 'features/songs';
+import { toast } from 'react-toastify';
 
 interface PlayerState {
   playing: boolean;
@@ -58,6 +59,11 @@ export const playerSlice = createSlice({
       state.playing = true;
     },
     addToQueue: (state, action: PayloadAction<Song>) => {
+      toast.success('Added to playlist!', {
+        autoClose: 1000,
+        position: toast.POSITION.BOTTOM_CENTER,
+        hideProgressBar: true,
+      });
       state.queue.push(action.payload);
     },
     removeFromQueue: (state, action: PayloadAction<Song>) => {

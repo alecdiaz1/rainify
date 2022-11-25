@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { gotoNextSong, pause } from 'features/player/playerSlice';
+import { gotoNextSong, pause, play } from 'features/player/playerSlice';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 
 export const AudioContext = createContext<{
@@ -32,7 +32,8 @@ export const AudioProvider = () => {
   const [seconds, setSeconds] = useState(COUNT_PLAY_SECONDS_THRESHOLD);
   const [currentSongCounted, setCurrentSongCounted] = useState(false);
 
-  // TODO: Pick a random song to play next if queue is empty
+  // TODO: Pick a random song to play next if queue is empty. Will need to
+  //  be able to get a random song from API.
   audioRef.current.addEventListener('ended', () => {
     if (queue.length > 1) {
       dispatch(gotoNextSong());
@@ -66,6 +67,7 @@ export const AudioProvider = () => {
     audioContext.audioRef = audioRef;
     audioRef.current.volume = volume;
     audioRef.current.play().then();
+    dispatch(play());
     setSeconds(COUNT_PLAY_SECONDS_THRESHOLD);
     setCurrentSongCounted(false);
   }, [currentSongInfo]);
