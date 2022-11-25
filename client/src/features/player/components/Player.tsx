@@ -17,14 +17,14 @@ export const Player = () => {
 
   return (
     <div
-      className={`fixed w-full transition-all ${
-        isPlayerVisible ? 'bottom-0' : '-bottom-full'
-      }`}>
-      <div className="relative w-full h-32 bg-gray-200 flex items-center">
+      className={`fixed w-11/12 -translate-x-1/2 left-1/2
+       mb-6 transition-all rounded-lg overflow-hidden drop-shadow-lg
+        ${isPlayerVisible ? 'bottom-0' : '-bottom-full'}`}>
+      <div className="relative w-full h-24 bg-gray-200 flex items-center rounded-lg">
         <div className="px-4 w-full flex items-center justify-between">
           <div className="flex">
             <img
-              className="aspect-square w-20 object-cover mr-4"
+              className="aspect-square w-16 object-cover mr-4"
               src={currentSongInfo?.albumArtUrl}
               alt={currentSongInfo?.title + ' album art'}
             />
