@@ -57,8 +57,10 @@ export const playerSlice = createSlice({
         if (newPrevSong) {
           state.history.push(newPrevSong);
         }
+        state.playing = true;
+      } else {
+        state.playing = false;
       }
-      state.playing = true;
     },
     addToQueue: (state, action: PayloadAction<Song>) => {
       toast.success('Added to queue!', {

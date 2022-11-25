@@ -7,7 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { gotoNextSong, pause, play } from 'features/player/playerSlice';
+import { gotoNextSong, play } from 'features/player/playerSlice';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 
 export const AudioContext = createContext<{
@@ -21,7 +21,6 @@ const COUNT_PLAY_SECONDS_THRESHOLD = 30;
 export const AudioProvider = () => {
   const dispatch = useAppDispatch();
   const isPlaying = useAppSelector((state: RootState) => state.player.playing);
-  const queue = useAppSelector((state: RootState) => state.player.queue);
   const volume = useAppSelector((state: RootState) => state.player.volume);
   const currentSongInfo = useAppSelector(
     (state: RootState) => state.player.queue[0],
@@ -31,14 +30,6 @@ export const AudioProvider = () => {
 
   const [seconds, setSeconds] = useState(COUNT_PLAY_SECONDS_THRESHOLD);
   const [currentSongCounted, setCurrentSongCounted] = useState(false);
-
-  audioRef.current.addEventListener('ended', () => {
-    if (queue.length > 1) {
-      dispatch(gotoNextSong());
-    } else {
-      dispatch(pause());
-    }
-  });
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -68,6 +59,12 @@ export const AudioProvider = () => {
     dispatch(play());
     setSeconds(COUNT_PLAY_SECONDS_THRESHOLD);
     setCurrentSongCounted(false);
+  }, [currentSongInfo]);
+
+  useEffect(() => {
+    audioRef.current.addEventListener('ended', () => {
+      dispatch(gotoNextSong());
+    });
   }, [currentSongInfo]);
 
   useEffect(() => {
