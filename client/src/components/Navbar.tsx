@@ -8,7 +8,7 @@ import { RootState } from 'stores/store';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { setSongDetailVisible } from 'features/player/playerSlice';
 import { VolumeSlider } from 'features/player/components/VolumeSlider';
-import { Link, useLocation, matchPath } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 export const Navbar = () => {
   const isSongDetailVisible = useAppSelector(
@@ -16,7 +16,7 @@ export const Navbar = () => {
   );
 
   const dispatch = useAppDispatch();
-  const { pathname } = useLocation();
+  const isHomePage = useMatch('/');
 
   return (
     <div className="grid grid-cols-3 items-center mx-4">
@@ -27,7 +27,7 @@ export const Navbar = () => {
           className="cursor-pointer"
         />
       )}
-      {matchPath('/profile/*', pathname) && !isSongDetailVisible && (
+      {!isHomePage && !isSongDetailVisible && (
         <Link to="/" className="w-2">
           <RiArrowDropLeftLine size={48} className="-ml-4" />
         </Link>

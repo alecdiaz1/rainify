@@ -6,6 +6,7 @@ import { PlayerControls } from './PlayerControls';
 import { PlayerSeeker } from './PlayerSeeker';
 import { Link } from 'react-router-dom';
 import { ArtistList } from 'components/ArtistList';
+import { RiPlayListFill } from 'react-icons/ri';
 
 export const Player = () => {
   const currentSongInfo = useAppSelector(
@@ -41,7 +42,10 @@ export const Player = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className="flex items-center">
+            <Link to="/queue">
+              <RiPlayListFill size={24} className="mr-4" />
+            </Link>
             <PlayerControls />
           </div>
         </div>

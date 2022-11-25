@@ -59,7 +59,7 @@ export const playerSlice = createSlice({
       state.playing = true;
     },
     addToQueue: (state, action: PayloadAction<Song>) => {
-      toast.success('Added to playlist!', {
+      toast.success('Added to queue!', {
         autoClose: 1000,
         position: toast.POSITION.BOTTOM_CENTER,
         hideProgressBar: true,
@@ -67,7 +67,7 @@ export const playerSlice = createSlice({
       state.queue.push(action.payload);
     },
     removeFromQueue: (state, action: PayloadAction<Song>) => {
-      state.queue = state.queue.filter((song) => song !== action.payload);
+      state.queue = state.queue.filter((song) => song.id !== action.payload.id);
     },
     setSongDetailVisible: (state, action: PayloadAction<boolean>) => {
       state.isSongDetailVisible = action.payload;

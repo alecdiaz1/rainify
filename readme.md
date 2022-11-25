@@ -31,6 +31,15 @@ App should now be running on `http://localhost:3000`
 
 ### TODO:
 1. Implement infinite scrolling on home page (since it should show all the songs)
-2. Implement searching
-3. Implement loading/error screens
-4. Figure out why songs randomly stop playing
+2. Pick a random song to play next if queue is empty. Will need to
+be able to get some random songs from API to put into queue.
+3. Implement searching
+4. Implement loading/error screens
+5. Implement public/private playlists for users
+6. Add album pages and album displays on profiles
+7. Add more metadata to songs (genre, year, etc.)
+
+### Known Issues
+- If same song is added to queue multiple times, all occurrences are highlighted as
+currently playing. Removing one will also remove all occurrences in the queue
+- Songs will randomly stop playing. Probably has to do with file size and loading

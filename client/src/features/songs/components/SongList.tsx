@@ -3,21 +3,17 @@ import { SongRow } from 'features/songs/components/SongRow';
 
 type SongListProps = {
   songs: Song[];
+  showRemovePlaylist?: boolean;
 };
 
-export const SongList = ({ songs }: SongListProps) => {
+export const SongList = ({
+  songs,
+  showRemovePlaylist = false,
+}: SongListProps) => {
   return (
     <div className="grid grid-cols-1 gap-2">
       {songs.map((song) => (
-        <SongRow
-          id={song.id}
-          key={song.id}
-          title={song.title}
-          artists={song.artists}
-          songUrl={song.songUrl}
-          albumArtUrl={song.albumArtUrl}
-          plays={song.plays}
-        />
+        <SongRow song={song} showRemovePlaylist={showRemovePlaylist} />
       ))}
     </div>
   );

@@ -1,13 +1,22 @@
 import { Song } from 'features/songs/types';
 import { useAppDispatch } from 'hooks/useAppDispatch';
-import { addToQueue, setCurrentSong } from 'features/player/playerSlice';
-import { RiPlayFill, RiPlayList2Fill } from 'react-icons/ri';
+import {
+  addToQueue,
+  removeFromQueue,
+  setCurrentSong,
+} from 'features/player/playerSlice';
+import { RiCloseFill, RiPlayFill, RiPlayList2Fill } from 'react-icons/ri';
 import { useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
 import { ArtistList } from 'components/ArtistList';
 
-export const SongRow = (song: Song) => {
+type SongRowProps = {
+  song: Song;
+  showRemovePlaylist?: boolean;
+};
+
+export const SongRow = ({ song, showRemovePlaylist }: SongRowProps) => {
   const dispatch = useAppDispatch();
   const currentSongId = useAppSelector(
     (state: RootState) => state.player.queue[0]?.id,
@@ -22,6 +31,26 @@ export const SongRow = (song: Song) => {
       setPlays(plays + 1);
     }
   };
+
+  const renderRemoveFromQueue = () => (
+    <div
+      className="flex items-center justify-end"
+      onClick={(e) => e.stopPropagation()}>
+      <button onClick={() => dispatch(removeFromQueue(song))}>
+        <RiCloseFill size={24} />
+      </button>
+    </div>
+  );
+
+  const renderAddToQueue = () => (
+    <div
+      className="flex items-end justify-end"
+      onClick={(e) => e.stopPropagation()}>
+      <button onClick={() => dispatch(addToQueue(song))}>
+        <RiPlayList2Fill />
+      </button>
+    </div>
+  );
 
   return (
     <div
@@ -45,13 +74,7 @@ export const SongRow = (song: Song) => {
             <p className="text-xs text-slate-400">{plays}</p>
           </div>
         </div>
-        <div
-          className="flex items-end justify-end"
-          onClick={(e) => e.stopPropagation()}>
-          <button onClick={() => dispatch(addToQueue(song))}>
-            <RiPlayList2Fill />
-          </button>
-        </div>
+        {showRemovePlaylist ? renderRemoveFromQueue() : renderAddToQueue()}
       </div>
     </div>
   );
