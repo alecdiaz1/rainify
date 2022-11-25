@@ -19,7 +19,7 @@ export const Navbar = () => {
   const isHomePage = useMatch('/');
 
   return (
-    <div className="grid grid-cols-3 items-center mx-4">
+    <div className="grid grid-cols-3 px-4 mb-4 items-center sticky top-0 bg-white drop-shadow w-full">
       {isSongDetailVisible && (
         <RiArrowDownSLine
           size={32}
