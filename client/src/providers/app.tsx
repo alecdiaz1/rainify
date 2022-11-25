@@ -7,6 +7,7 @@ import { store } from 'stores/store';
 import { AudioProvider } from 'providers/AudioProvider';
 import { Navbar } from 'components/Navbar';
 import { SongDetail } from 'features/song-detail/SongDetail';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const ErrorFallback = () => {
   return (
@@ -23,24 +24,28 @@ const ErrorFallback = () => {
   );
 };
 
+const queryClient = new QueryClient();
+
 type AppProviderProps = {
   children: React.ReactNode;
 };
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <Provider store={store}>
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        <div className="h-screen">
-          <Router>
-            <Navbar />
-            <SongDetail />
-            <div className="mx-4">{children}</div>
-            <Player />
-            <AudioProvider />
-          </Router>
-        </div>
-      </ErrorBoundary>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <div className="h-screen">
+            <Router>
+              <Navbar />
+              <SongDetail />
+              <div className="mx-4">{children}</div>
+              <Player />
+              <AudioProvider />
+            </Router>
+          </div>
+        </ErrorBoundary>
+      </Provider>
+    </QueryClientProvider>
   );
 };

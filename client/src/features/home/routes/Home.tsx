@@ -1,21 +1,15 @@
 import { SongList } from 'features/songs/components/SongList';
-import { useEffect, useState } from 'react';
-import applyCaseMiddleware from 'axios-case-converter';
-import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import { homeQuery } from 'features/home/api/homeQuery';
 
 export const Home = () => {
-  const [songs, setSongs] = useState([]);
+  const { isLoading, data } = useQuery(homeQuery());
 
-  useEffect(() => {
-    const client = applyCaseMiddleware(axios.create());
-    client.get(`${process.env.REACT_APP_API_URL}/songs`).then((res) => {
-      setSongs(res.data.songs);
-    });
-  }, []);
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <>
-      <SongList songs={songs} />
+      <SongList songs={data.songs} />
     </>
   );
 };
