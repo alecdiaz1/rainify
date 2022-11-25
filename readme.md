@@ -37,7 +37,9 @@ be able to get some random songs from API to put into queue.
 4. Implement loading/error screens
 5. Implement public/private playlists for users
 6. Add album pages and album displays on profiles
-7. Add more metadata to songs (genre, year, etc.)
+7. Add more metadata to songs (genre, year, label, etc.)
+8. Implement logging stream events in DB
+    - Log timestamp streamed, so later we can figure out how many streams a song/artist/label got for payouts
 
 ### Known Issues
 - If same song is added to queue multiple times, all occurrences are highlighted as
