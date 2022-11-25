@@ -42,6 +42,4 @@ be able to get some random songs from API to put into queue.
     - Log timestamp streamed, so later we can figure out how many streams a song/artist/label got for payouts
 
 ### Known Issues
-- If same song is added to queue multiple times, all occurrences are highlighted as
-currently playing. Removing one will also remove all occurrences in the queue
 - Songs will randomly stop playing. Probably has to do with file size and loading

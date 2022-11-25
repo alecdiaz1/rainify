@@ -1,19 +1,21 @@
-import { Song } from 'features/songs/types';
 import { SongRow } from 'features/songs/components/SongRow';
+import { QueueSong } from 'features/player';
 
 type SongListProps = {
-  songs: Song[];
-  showRemovePlaylist?: boolean;
+  songs: QueueSong[];
+  showRemoveQueue?: boolean;
+  className?: string;
 };
 
 export const SongList = ({
   songs,
-  showRemovePlaylist = false,
+  showRemoveQueue = false,
+  className = '',
 }: SongListProps) => {
   return (
-    <div className="grid grid-cols-1 gap-2">
+    <div className={`grid grid-cols-1 gap-2 ${className}`}>
       {songs.map((song) => (
-        <SongRow song={song} showRemovePlaylist={showRemovePlaylist} />
+        <SongRow song={song} showRemoveQueue={showRemoveQueue} />
       ))}
     </div>
   );

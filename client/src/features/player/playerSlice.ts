@@ -2,11 +2,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RefObject } from 'react';
 import { Song } from 'features/songs';
 import { toast } from 'react-toastify';
+import { v4 as uuidv4 } from 'uuid';
+import { QueueSong } from 'features/player/types';
 
 interface PlayerState {
   playing: boolean;
-  queue: Song[];
-  history: Song[];
+  queue: QueueSong[];
+  history: QueueSong[];
   isSongDetailVisible: boolean;
   currentSongRef: RefObject<HTMLAudioElement> | null;
   volume: number;
@@ -39,7 +41,7 @@ export const playerSlice = createSlice({
           state.history.push(newPrevSong);
         }
       }
-      state.queue[0] = action.payload;
+      state.queue[0] = { ...action.payload, queueId: uuidv4() };
       state.playing = true;
     },
     gotoPreviousSong: (state) => {
@@ -64,10 +66,12 @@ export const playerSlice = createSlice({
         position: toast.POSITION.BOTTOM_CENTER,
         hideProgressBar: true,
       });
-      state.queue.push(action.payload);
+      state.queue.push({ ...action.payload, queueId: uuidv4() });
     },
-    removeFromQueue: (state, action: PayloadAction<Song>) => {
-      state.queue = state.queue.filter((song) => song.id !== action.payload.id);
+    removeFromQueue: (state, action: PayloadAction<QueueSong>) => {
+      state.queue = state.queue.filter(
+        (song) => song.queueId !== action.payload.queueId,
+      );
     },
     setSongDetailVisible: (state, action: PayloadAction<boolean>) => {
       state.isSongDetailVisible = action.payload;

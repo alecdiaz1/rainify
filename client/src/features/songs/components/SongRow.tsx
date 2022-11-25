@@ -10,13 +10,19 @@ import { useState } from 'react';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
 import { ArtistList } from 'components/ArtistList';
+import { QueueSong } from 'features/player';
 
 type SongRowProps = {
-  song: Song;
-  showRemovePlaylist?: boolean;
+  song: QueueSong;
+  showRemoveQueue?: boolean;
+  className?: string;
 };
 
-export const SongRow = ({ song, showRemovePlaylist }: SongRowProps) => {
+export const SongRow = ({
+  song,
+  showRemoveQueue,
+  className = '',
+}: SongRowProps) => {
   const dispatch = useAppDispatch();
   const currentSongId = useAppSelector(
     (state: RootState) => state.player.queue[0]?.id,
@@ -54,9 +60,9 @@ export const SongRow = ({ song, showRemovePlaylist }: SongRowProps) => {
 
   return (
     <div
-      className={`rounded-md border-2 flex cursor-pointer overflow-hidden ${
-        currentSongId === song.id ? 'bg-gray-50' : ''
-      }`}
+      className={`rounded-md border-2 flex cursor-pointer overflow-hidden 
+        ${className} 
+        ${!showRemoveQueue && currentSongId === song.id ? 'bg-gray-50' : ''}`}
       onClick={() => onSongClick(song)}>
       <img
         className="aspect-square w-20 object-cover"
@@ -74,7 +80,7 @@ export const SongRow = ({ song, showRemovePlaylist }: SongRowProps) => {
             <p className="text-xs text-slate-400">{plays}</p>
           </div>
         </div>
-        {showRemovePlaylist ? renderRemoveFromQueue() : renderAddToQueue()}
+        {showRemoveQueue ? renderRemoveFromQueue() : renderAddToQueue()}
       </div>
     </div>
   );
