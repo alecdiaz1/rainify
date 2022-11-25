@@ -27,3 +27,10 @@ Project structure based off [bulletproof-react](https://github.com/alan2207/bull
 4. Start app with `yarn start`
 
 App should now be running on `http://localhost:3000`
+
+
+### TODO:
+1. Implement infinite scrolling on home page (since it should show all the songs)
+2. Implement searching
+3. Implement loading/error screens
+4. Figure out why songs randomly stop playing
