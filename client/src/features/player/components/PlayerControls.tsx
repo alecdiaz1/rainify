@@ -15,16 +15,24 @@ import { useAppSelector } from 'hooks/useAppSelector';
 import { RootState } from 'stores/store';
 
 export const PlayerControls = ({ className }: { className?: string }) => {
-  const isPlaying = useAppSelector((state: RootState) => state.player.playing);
   const dispatch = useAppDispatch();
+  const isPlaying = useAppSelector((state: RootState) => state.player.playing);
+  const queue = useAppSelector((state: RootState) => state.player.queue);
+  const history = useAppSelector((state: RootState) => state.player.history);
+
+  const isSkipForwardDisabled = queue.length <= 1;
+  const isSkipBackDisabled = history.length < 1;
 
   return (
     <div className={`flex items-center justify-between ${className || ''}`}>
-      <RiSkipBackFill
-        size={32}
-        style={{ cursor: 'pointer' }}
-        onClick={() => dispatch(gotoPreviousSong())}
-      />
+      <button disabled={isSkipBackDisabled}>
+        <RiSkipBackFill
+          size={32}
+          onClick={() => dispatch(gotoPreviousSong())}
+          className={isSkipBackDisabled ? 'fill-gray-500' : 'fill-black'}
+        />
+      </button>
+
       <div className="mx-4">
         {isPlaying ? (
           <RiPauseCircleFill
@@ -40,11 +48,13 @@ export const PlayerControls = ({ className }: { className?: string }) => {
           />
         )}
       </div>
-      <RiSkipForwardFill
-        size={32}
-        style={{ cursor: 'pointer' }}
-        onClick={() => dispatch(gotoNextSong())}
-      />
+      <button disabled={isSkipForwardDisabled}>
+        <RiSkipForwardFill
+          size={32}
+          onClick={() => dispatch(gotoNextSong())}
+          className={isSkipForwardDisabled ? 'fill-gray-500' : 'fill-black'}
+        />
+      </button>
     </div>
   );
 };
