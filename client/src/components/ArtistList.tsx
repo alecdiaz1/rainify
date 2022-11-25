@@ -14,6 +14,7 @@ export const ArtistList = ({ artists, className }: ArtistListProps) => {
     <>
       {Object.entries(artists).map((artist, idx) => (
         <Link
+          key={artist[0]}
           to={`/profile/${artist[0]}`}
           className={`text-sm text-slate-400 hover:underline ${className}`}
           onClick={() => dispatch(setSongDetailVisible(false))}>

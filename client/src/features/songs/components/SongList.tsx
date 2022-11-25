@@ -15,7 +15,11 @@ export const SongList = ({
   return (
     <div className={`grid grid-cols-1 gap-2 ${className}`}>
       {songs.map((song) => (
-        <SongRow song={song} showRemoveQueue={showRemoveQueue} />
+        <SongRow
+          key={song.queueId || song.id}
+          song={song}
+          showRemoveQueue={showRemoveQueue}
+        />
       ))}
     </div>
   );
