@@ -38,6 +38,8 @@ be able to get some random songs from API to put into queue.
 5. Implement public/private playlists for users
 6. Add album pages and album displays on profiles
 7. Add more metadata to songs (genre, year, label, etc.)
+8. Create portal for uploading/approving songs/viewing data
+9. Add looping and shuffle
 
 ### Known Issues
 - Songs will randomly stop playing. Probably has to do with file size and loading
