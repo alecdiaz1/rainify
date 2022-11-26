@@ -34,11 +34,14 @@ export const playerSlice = createSlice({
       state.playing = false;
     },
     setCurrentSong: (state, action: PayloadAction<Song>) => {
-      const newPrevSong = state.queue[0];
-      const prevSong = state.history[state.history.length - 1];
-      if (!prevSong || !(newPrevSong === prevSong)) {
-        state.history.push(newPrevSong);
+      if (state.queue.length > 1) {
+        const newPrevSong = state.queue[0];
+        const prevSong = state.history[state.history.length - 1];
+        if (!prevSong || !(newPrevSong === prevSong)) {
+          state.history.push(newPrevSong);
+        }
       }
+
       state.queue[0] = { ...action.payload, queueId: uuidv4() };
       state.playing = true;
     },
