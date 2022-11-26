@@ -34,7 +34,7 @@ export const playerSlice = createSlice({
       state.playing = false;
     },
     setCurrentSong: (state, action: PayloadAction<Song>) => {
-      if (state.queue.length > 1) {
+      if (state.queue.length > 0) {
         const newPrevSong = state.queue[0];
         const prevSong = state.history[state.history.length - 1];
         if (!prevSong || !(newPrevSong === prevSong)) {
