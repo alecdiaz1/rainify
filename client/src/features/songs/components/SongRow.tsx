@@ -60,9 +60,8 @@ export const SongRow = ({
 
   return (
     <div
-      className={`rounded-md border-2 flex cursor-pointer overflow-hidden 
-        ${className} 
-        ${!showRemoveQueue && currentSongId === song.id ? 'bg-gray-50' : ''}`}
+      className={`rounded-md flex cursor-pointer overflow-hidden text-white hover:bg-neutral-800
+        ${className}`}
       onClick={() => onSongClick(song)}>
       <img
         className="aspect-square w-20 object-cover"
@@ -71,7 +70,14 @@ export const SongRow = ({
       />
       <div className="mx-4 my-2 flex justify-between w-full">
         <div className="flex flex-col">
-          <p className="">{song.title}</p>
+          <p
+            className={
+              !showRemoveQueue && currentSongId === song.id
+                ? 'text-green-500'
+                : 'text-white'
+            }>
+            {song.title}
+          </p>
           <div className="flex -mt-1" onClick={(e) => e.stopPropagation()}>
             <ArtistList artists={song.artists} />
           </div>

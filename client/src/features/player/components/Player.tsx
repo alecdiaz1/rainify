@@ -20,7 +20,7 @@ export const Player = () => {
       className={`fixed w-11/12 -translate-x-1/2 left-1/2
        mb-6 transition-all rounded-lg overflow-hidden drop-shadow-lg
         ${isPlayerVisible ? 'bottom-0' : '-bottom-full'}`}>
-      <div className="relative w-full h-24 bg-gray-200 flex items-center rounded-lg">
+      <div className="relative bg-neutral-700 w-full h-24 bg-gray-200 flex items-center rounded-lg">
         <div className="px-4 w-full flex items-center justify-between">
           <div className="flex">
             <img
@@ -31,12 +31,12 @@ export const Player = () => {
             <div>
               <div className="-mt-1">
                 <p
-                  className="text-lg cursor-pointer"
+                  className="text-lg cursor-pointer text-white"
                   onClick={() => dispatch(setSongDetailVisible(true))}>
                   {currentSongInfo?.title}
                 </p>
                 <ArtistList
-                  className="text-base -mt-2"
+                  className="text-base -mt-8"
                   artists={currentSongInfo ? currentSongInfo.artists : []}
                 />
               </div>
@@ -44,7 +44,7 @@ export const Player = () => {
           </div>
           <div className="flex items-center">
             <Link to="/queue">
-              <RiPlayListFill size={24} className="mr-4" />
+              <RiPlayListFill size={24} className="mr-4 fill-gray-400" />
             </Link>
             <PlayerControls />
           </div>

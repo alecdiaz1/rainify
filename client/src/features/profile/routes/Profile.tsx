@@ -12,7 +12,9 @@ export const Profile = () => {
 
   return (
     <>
-      <h2 className="text-xl mb-4">Songs by {data.artistName}</h2>
+      <h2 className="text-xl mb-4 text-white font-bold">
+        Songs by {data.artistName}
+      </h2>
       <SongList songs={data.songs} />
     </>
   );

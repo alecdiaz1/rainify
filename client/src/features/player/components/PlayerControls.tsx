@@ -29,20 +29,21 @@ export const PlayerControls = ({ className }: { className?: string }) => {
         <RiSkipBackFill
           size={32}
           onClick={() => dispatch(gotoPreviousSong())}
-          className={isSkipBackDisabled ? 'fill-gray-500' : 'fill-black'}
+          className={isSkipBackDisabled ? 'fill-gray-500' : 'fill-gray-300'}
         />
       </button>
-
       <div className="mx-4">
         {isPlaying ? (
           <RiPauseCircleFill
             size={48}
+            className={'fill-gray-300'}
             style={{ cursor: 'pointer' }}
             onClick={() => dispatch(pause())}
           />
         ) : (
           <RiPlayCircleFill
             size={48}
+            className={'fill-gray-300'}
             style={{ cursor: 'pointer' }}
             onClick={() => dispatch(play())}
           />
@@ -52,7 +53,7 @@ export const PlayerControls = ({ className }: { className?: string }) => {
         <RiSkipForwardFill
           size={32}
           onClick={() => dispatch(gotoNextSong())}
-          className={isSkipForwardDisabled ? 'fill-gray-500' : 'fill-black'}
+          className={isSkipForwardDisabled ? 'fill-gray-500' : 'fill-gray-300'}
         />
       </button>
     </div>

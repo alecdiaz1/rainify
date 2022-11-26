@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RefObject } from 'react';
 import { Song } from 'features/songs';
-import { toast } from 'react-toastify';
+import { Slide, toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
 import { QueueSong } from 'features/player/types';
 
@@ -64,9 +64,10 @@ export const playerSlice = createSlice({
     },
     addToQueue: (state, action: PayloadAction<Song>) => {
       toast.success('Added to queue!', {
-        autoClose: 1000,
-        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 2000,
+        position: toast.POSITION.TOP_CENTER,
         hideProgressBar: true,
+        transition: Slide,
       });
       state.queue.push({ ...action.payload, queueId: uuidv4() });
     },

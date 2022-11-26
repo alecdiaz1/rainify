@@ -11,10 +11,10 @@ export const Queue = () => {
 
   return (
     <>
-      <h2 className="text-xl mb-4 font-bold">Queue</h2>
-      <h3 className="text-lg font-semibold">Now playing:</h3>
+      <h2 className="text-xl mb-4 font-bold text-white">Queue</h2>
+      <h3 className="text-lg font-semibold text-white">Now playing:</h3>
       <SongRow className="mt-2" song={currentSongInfo} />
-      <h3 className="text-lg font-semibold mt-8">Up next:</h3>
+      <h3 className="text-lg font-semibold mt-8 text-white">Up next:</h3>
       <SongList className="mt-2" songs={queue.slice(1)} showRemoveQueue />
     </>
   );

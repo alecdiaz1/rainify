@@ -45,9 +45,11 @@ export const PlayerSeeker = ({
           onChange={(e) => onScrub(e.target.value)}
         />
         <input
-          className="seeker absolute bottom-0 bg-black h-2 cursor-pointer"
+          className="seeker absolute bottom-0 bg-green-400 h-2 cursor-pointer"
           style={{
-            width: (trackProgress / duration) * 100 + '%',
+            width: trackProgress
+              ? (trackProgress / duration) * 100 + '%'
+              : '0%',
             pointerEvents: 'none',
           }}
           type="range"

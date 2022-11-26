@@ -37,7 +37,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
     <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <div className="h-screen">
+          <div className="h-screen bg-neutral-900 overflow-auto pb-4">
             <Router>
               <Navbar />
               <SongDetail />

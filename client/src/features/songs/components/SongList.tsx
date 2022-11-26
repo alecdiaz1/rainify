@@ -13,7 +13,7 @@ export const SongList = ({
   className = '',
 }: SongListProps) => {
   return (
-    <div className={`grid grid-cols-1 gap-2 ${className}`}>
+    <div className={`grid grid-cols-1 gap-4 ${className}`}>
       {songs.map((song) => (
         <SongRow
           key={song.queueId || song.id}

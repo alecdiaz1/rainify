@@ -19,16 +19,16 @@ export const SongDetail = () => {
 
   return (
     <div
-      className={`fixed w-full h-full bg-white transition-all z-10 ${
+      className={`fixed w-full h-full bg-neutral-900 transition-all z-10 ${
         isVisible ? 'top-16' : 'top-full'
       }`}>
-      <div className="flex flex-col mx-4">
+      <div className="flex flex-col mt-6 mx-4">
         <img
           className="aspect-square object-cover rounded-lg"
           src={currentSongInfo?.albumArtUrl}
           alt={`${currentSongInfo?.title} album art`}
         />
-        <h1 className="font-bold mt-8">{currentSongInfo?.title}</h1>
+        <h1 className="font-bold mt-8 text-white">{currentSongInfo?.title}</h1>
         <h2>
           <ArtistList
             className="text-base"
@@ -43,7 +43,7 @@ export const SongDetail = () => {
             <Link
               to="/queue"
               onClick={() => dispatch(setSongDetailVisible(false))}>
-              <RiPlayListFill size={24} />
+              <RiPlayListFill size={24} className="fill-gray-100" />
             </Link>
           </div>
         </div>
