@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import { gotoNextSong, play } from 'features/player/playerSlice';
 import { useAppDispatch } from 'hooks/useAppDispatch';
+import { axiosClient } from 'lib/axios';
 
 export const AudioContext = createContext<{
   audioRef: React.RefObject<any> | null;
@@ -16,7 +17,7 @@ export const AudioContext = createContext<{
   audioRef: null,
 });
 
-const COUNT_PLAY_SECONDS_THRESHOLD = 30;
+const COUNT_PLAY_SECONDS_THRESHOLD = 5;
 
 export const AudioProvider = () => {
   const dispatch = useAppDispatch();
@@ -38,9 +39,11 @@ export const AudioProvider = () => {
           setSeconds(seconds - 1);
         } else {
           if (currentSongInfo && !currentSongCounted) {
-            fetch(
-              `${process.env.REACT_APP_API_URL}/songs/${currentSongInfo.id}/add-play`,
-            ).then();
+            axiosClient
+              .patch(
+                `${process.env.REACT_APP_API_URL}/songs/${currentSongInfo.id}/add-play`,
+              )
+              .then();
             setCurrentSongCounted(true);
             clearInterval(interval);
           }
