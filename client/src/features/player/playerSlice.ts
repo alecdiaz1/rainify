@@ -34,15 +34,24 @@ export const playerSlice = createSlice({
       state.playing = false;
     },
     setCurrentSong: (state, action: PayloadAction<Song>) => {
-      if (state.queue.length > 0) {
-        const newPrevSong = state.queue[0];
-        const prevSong = state.history[state.history.length - 1];
-        if (!prevSong || !(newPrevSong === prevSong)) {
-          state.history.push(newPrevSong);
-        }
+      const newPrevSong = state.queue[0];
+      const prevSong = state.history[state.history.length - 1];
+      if (!prevSong || !(newPrevSong === prevSong)) {
+        state.history.push(newPrevSong);
       }
       state.queue[0] = { ...action.payload, queueId: uuidv4() };
       state.playing = true;
+    },
+    setCurrentSongFromQueue: (state, action: PayloadAction<string>) => {
+      state.history.push(state.queue[0]);
+
+      let newQueue = state.queue;
+      let currentQueueSong = newQueue.shift()!;
+      while (action.payload !== currentQueueSong.queueId) {
+        currentQueueSong = newQueue.shift()!;
+      }
+
+      state.queue = [currentQueueSong, ...newQueue];
     },
     gotoPreviousSong: (state) => {
       const newCurrentSong = state.history.pop();
@@ -89,6 +98,7 @@ export const {
   play,
   pause,
   setCurrentSong,
+  setCurrentSongFromQueue,
   gotoPreviousSong,
   gotoNextSong,
   addToQueue,

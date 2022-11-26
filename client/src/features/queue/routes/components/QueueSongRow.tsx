@@ -1,5 +1,8 @@
 import { useAppDispatch } from 'hooks/useAppDispatch';
-import { removeFromQueue, setCurrentSong } from 'features/player/playerSlice';
+import {
+  removeFromQueue,
+  setCurrentSongFromQueue,
+} from 'features/player/playerSlice';
 import { RiCloseFill } from 'react-icons/ri';
 import { SongInfo } from 'features/songs/components/SongInfo';
 import { QueueSong } from 'features/player';
@@ -16,7 +19,9 @@ export const QueueSongRow = ({ song, className = '' }: QueueSongRowProps) => {
     <div
       className={`rounded-md flex cursor-pointer overflow-hidden text-white hover:bg-neutral-800
         ${className}`}
-      onClick={() => dispatch(setCurrentSong(song))}>
+      onClick={() => {
+        dispatch(setCurrentSongFromQueue(song.queueId));
+      }}>
       <SongInfo hidePlayCount song={song} />
       <div
         className="flex items-center justify-end"
