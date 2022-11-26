@@ -26,7 +26,9 @@ export const QueueSongRow = ({ song, className = '' }: QueueSongRowProps) => {
       <div
         className="flex items-center justify-end"
         onClick={(e) => e.stopPropagation()}>
-        <button onClick={() => dispatch(removeFromQueue(song))}>
+        <button
+          className="pr-2"
+          onClick={() => dispatch(removeFromQueue(song))}>
           <RiCloseFill size={24} />
         </button>
       </div>
