@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Song from 'App/Models/Song'
 import Database from '@ioc:Adonis/Lucid/Database'
+import StreamEvent from 'App/Models/StreamEvent'
 
 export default class SongsController {
   public async index() {
@@ -12,8 +12,12 @@ export default class SongsController {
         'songs.title',
         'songs.song_url',
         'songs.album_art_url',
-        'songs.plays',
-        Database.raw('jsonb_object_agg(users.id, users.name) AS artists')
+        Database.raw('jsonb_object_agg(users.id, users.name) AS artists'),
+        Database.raw(
+          '(SELECT COUNT(*) \n' +
+          'FROM stream_events\n' +
+          'WHERE songs.id = stream_events.song_id\t\n' +
+          ') AS plays')
       )
       .join('songs', 'songs.id', '=', 'user_song.song_id')
       .join('users', 'users.id', '=', 'user_song.user_id')
@@ -25,18 +29,38 @@ export default class SongsController {
 
   public async show({ request }: HttpContextContract) {
     const songId = request.param('id')
-    const songInfo = await Song.find(songId)
-
-    return { songInfo }
+    return this.getSong(songId)
   }
 
   public async addPlay({ request }: HttpContextContract) {
     const songId = request.param('id')
-    const song = await Song.find(songId)
-    if (song) {
-      song.plays = song.plays + 1
-      await song.save()
-      return song.plays
-    }
+
+    const streamEvent = new StreamEvent()
+    streamEvent.songId = songId
+    await streamEvent.save()
+
+    return this.getSong(songId)
+  }
+
+  private async getSong(songId: number) {
+    return Database.from('user_song')
+      .select(
+        'songs.id',
+        'songs.title',
+        'songs.song_url',
+        'songs.album_art_url',
+        Database.raw('jsonb_object_agg(users.id, users.name) AS artists'),
+        Database.raw(
+          '(SELECT COUNT(*) \n' +
+            'FROM stream_events\n' +
+            'WHERE songs.id = stream_events.song_id\t\n' +
+            ') AS plays'
+        )
+      )
+      .join('songs', 'songs.id', '=', 'user_song.song_id')
+      .join('users', 'users.id', '=', 'user_song.user_id')
+      .where('songs.id', '=', songId)
+      .groupBy('songs.id')
+      .orderBy('songs.id')
   }
 }

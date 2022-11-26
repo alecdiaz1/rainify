@@ -34,7 +34,7 @@ export const SongRow = ({
     if (song.id !== currentSongId) {
       dispatch(setCurrentSong(song));
       // Optimistic update, actual update happens in AudioProvider
-      setPlays(plays + 1);
+      setPlays(Number(plays) + 1);
     }
   };
 

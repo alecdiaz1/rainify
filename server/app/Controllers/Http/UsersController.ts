@@ -15,8 +15,12 @@ export default class SongsController {
         'songs.title',
         'songs.song_url',
         'songs.album_art_url',
-        'songs.plays',
-        Database.raw('jsonb_object_agg(users.id, users.name) AS artists')
+        Database.raw('jsonb_object_agg(users.id, users.name) AS artists'),
+        Database.raw(
+          '(SELECT COUNT(*) \n' +
+          'FROM stream_events\n' +
+          'WHERE songs.id = stream_events.song_id\t\n' +
+          ') AS plays')
       )
       .join('songs', 'songs.id', '=', 'user_song.song_id')
       .join('users', 'users.id', '=', 'user_song.user_id')
