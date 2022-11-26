@@ -34,12 +34,10 @@ App should now be running on `http://localhost:3000`
 2. Pick a random song to play next if queue is empty. Will need to
 be able to get some random songs from API to put into queue.
 3. Implement searching
-4. Implement loading/error screens
+4. Implement loading (skeleton)/error screens
 5. Implement public/private playlists for users
 6. Add album pages and album displays on profiles
 7. Add more metadata to songs (genre, year, label, etc.)
-8. Implement logging stream events in DB
-    - Log timestamp streamed, so later we can figure out how many streams a song/artist/label got for payouts
 
 ### Known Issues
 - Songs will randomly stop playing. Probably has to do with file size and loading
