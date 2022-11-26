@@ -20,7 +20,7 @@ export const Player = () => {
       className={`fixed w-11/12 -translate-x-1/2 left-1/2
        mb-6 transition-all rounded-lg overflow-hidden drop-shadow-lg
         ${isPlayerVisible ? 'bottom-0' : '-bottom-full'}`}>
-      <div className="relative bg-neutral-700 w-full h-24 bg-gray-200 flex items-center rounded-lg">
+      <div className="relative bg-neutral-700 w-full h-24 bg-neutral-800 flex items-center rounded-lg">
         <div className="px-4 w-full flex items-center justify-between">
           <div className="flex">
             <img

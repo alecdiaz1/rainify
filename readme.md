@@ -30,16 +30,19 @@ App should now be running on `http://localhost:3000`
 
 
 ### TODO:
-1. Implement infinite scrolling on home page (since it should show all the songs)
-2. Pick a random song to play next if queue is empty. Will need to
+1. Figure out where to properly store song data
+2. Implement infinite scrolling on home page (since it should show all the songs)
+3. Pick a random song to play next if queue is empty. Will need to
 be able to get some random songs from API to put into queue.
-3. Implement searching
-4. Implement loading (skeleton)/error screens
-5. Implement public/private playlists for users
-6. Add album pages and album displays on profiles
-7. Add more metadata to songs (genre, year, label, etc.)
-8. Create portal for uploading/approving songs/viewing data
-9. Add looping and shuffle
+4. Implement searching
+5. Implement loading (skeleton)/error screens
+6. Implement public/private playlists for users
+7. Add album pages and album displays on profiles
+8. Add more metadata to songs (genre, year, label, etc.)
+9. Create portal for uploading/approving songs/viewing data
+10. Add looping and shuffle
 
 ### Known Issues
+- Song play counts get messed up on different pages. Song count data is local to the song row component, but it probably shouldn't be.
+    See TODO #1.
 - Songs will randomly stop playing. Probably has to do with file size and loading
