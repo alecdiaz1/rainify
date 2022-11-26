@@ -12,10 +12,16 @@ export const Queue = () => {
   return (
     <>
       <h2 className="text-xl mb-4 font-bold text-white">Queue</h2>
-      <h3 className="text-lg font-semibold text-white">Now playing:</h3>
-      <QueueSongRow className="mt-2" song={currentSongInfo} />
-      <h3 className="text-lg font-semibold mt-8 text-white">Up next:</h3>
-      <QueueSongList className="mt-2" songs={queue.slice(1)} />
+      {currentSongInfo ? (
+        <>
+          <h3 className="text-lg font-semibold text-white">Now playing:</h3>
+          <QueueSongRow className="mt-2" song={currentSongInfo} />
+          <h3 className="text-lg font-semibold mt-8 text-white">Up next:</h3>
+          <QueueSongList className="mt-2" songs={queue.slice(1)} />
+        </>
+      ) : (
+        <p className="text-lg font-semibold text-white">Nothing in queue!</p>
+      )}
     </>
   );
 };
