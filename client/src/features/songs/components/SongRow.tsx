@@ -22,7 +22,9 @@ export const SongRow = ({ song, className = '' }: SongRowProps) => {
       <div
         className="flex items-end justify-end"
         onClick={(e) => e.stopPropagation()}>
-        <button onClick={() => dispatch(addToQueue(song))}>
+        <button
+          className="px-2 py-2"
+          onClick={() => dispatch(addToQueue(song))}>
           <RiPlayList2Fill />
         </button>
       </div>
