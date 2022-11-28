@@ -21,8 +21,18 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
-  Route.get('/songs', 'SongsController.index')
-  Route.get('/songs/:id', 'SongsController.show')
-  Route.patch('/songs/:id/add-play', 'SongsController.addPlay')
-  Route.get('/users/:id', 'UsersController.show')
+  Route.group(() => {
+    Route.get('/', 'SongsController.index')
+    Route.get('/:id', 'SongsController.show')
+    Route.patch('/:id/add-play', 'SongsController.addPlay')
+  }).prefix('/songs')
+
+  Route.group(() => {
+    Route.get('/:id', 'UsersController.show')
+    Route.get('/:id/playlists', 'PlaylistsController.index')
+  }).prefix('/users')
+
+  Route.group(() => {
+    Route.get('/:id', 'PlaylistsController.show')
+  }).prefix('/playlists')
 }).prefix('/api')
