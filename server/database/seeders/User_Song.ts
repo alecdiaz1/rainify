@@ -5,28 +5,28 @@ export default class extends BaseSeeder {
   public async run() {
     await User_Song.createMany([
       {
-        user_id: 1,
-        song_id: 1,
+        userId: 1,
+        songId: 1,
       },
       {
-        user_id: 3,
-        song_id: 2,
+        userId: 3,
+        songId: 2,
       },
       {
-        user_id: 4,
-        song_id: 3,
+        userId: 4,
+        songId: 3,
       },
       {
-        user_id: 1,
-        song_id: 4,
+        userId: 1,
+        songId: 4,
       },
       {
-        user_id: 2,
-        song_id: 4,
+        userId: 2,
+        songId: 4,
       },
       {
-        user_id: 2,
-        song_id: 5,
+        userId: 2,
+        songId: 5,
       },
     ])
   }
