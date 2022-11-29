@@ -11,7 +11,7 @@ export const Playlists = () => {
 
   return (
     <>
-      {data.playlists.map((playlist: Playlist) => (
+      {data.userPlaylists.map((playlist: Playlist) => (
         <PlaylistRow key={playlist.id} playlist={playlist} />
       ))}
     </>

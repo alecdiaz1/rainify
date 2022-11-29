@@ -12,7 +12,11 @@ export const Playlist = () => {
 
   return (
     <>
-      <SongList songs={data.playlistSongs} hidePlayCount />
+      {data.playlistSongs.length > 0 ? (
+        <SongList songs={data.playlistSongs} hidePlayCount />
+      ) : (
+        <p className="text-white">Playlist is empty!</p>
+      )}
     </>
   );
 };

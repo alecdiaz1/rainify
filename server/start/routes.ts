@@ -34,6 +34,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/:id', 'PlaylistsController.show')
-    Route.patch('/:id', 'PlaylistsController.update')
+    Route.post('/create', 'PlaylistsController.create')
+    Route.patch('/:id/add-song', 'PlaylistsController.update')
   }).prefix('/playlists')
 }).prefix('/api')
