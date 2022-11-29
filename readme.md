@@ -36,13 +36,7 @@ App should now be running on `http://localhost:3000`
 be able to get some random songs from API to put into queue.
 4. Implement searching
 5. Implement loading (skeleton)/error screens
-6. Implement public/private playlists for users
-7. Add album pages and album displays on profiles
-8. Add more metadata to songs (genre, year, label, etc.)
-9. Create portal for uploading/approving songs/viewing data
-10. Add looping and shuffle
-
-### Known Issues
-- Song play counts get messed up on different pages. Song count data is local to the song row component, but it probably shouldn't be.
-    See TODO #1.
-- Songs will randomly stop playing. Probably has to do with file size and loading
+6. Add album pages and album displays on profiles
+7. Add more metadata to songs (genre, year, label, etc.)
+8. Create portal for uploading/approving songs/viewing data
+9. Add looping and shuffle
