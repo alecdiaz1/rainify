@@ -19,17 +19,17 @@ export default class SongsController {
         Database.raw(
           '(SELECT COUNT(*) \n' +
           'FROM stream_events\n' +
-          'WHERE songs.id = stream_events.songId\t\n' +
+          'WHERE songs.id = stream_events.song_id\t\n' +
           ') AS plays')
       )
-      .join('songs', 'songs.id', '=', 'user_song.songId')
-      .join('users', 'users.id', '=', 'user_song.userId')
+      .join('songs', 'songs.id', '=', 'user_song.song_id')
+      .join('users', 'users.id', '=', 'user_song.user_id')
       .whereIn(
         'songs.id',
         Database
           .from('user_song')
-          .select('user_song.songId')
-          .where('user_song.userId', '=', userId)
+          .select('user_song.song_id')
+          .where('user_song.user_id', '=', userId)
       )
       .groupBy('songs.id')
       .orderBy('songs.id')
