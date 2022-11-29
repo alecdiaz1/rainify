@@ -10,6 +10,7 @@ import { SongDetail } from 'features/song-detail/SongDetail';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { TabBar } from 'components/TabBar';
 
 const ErrorFallback = () => {
   return (
@@ -44,6 +45,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
               <div className="mx-4">{children}</div>
               <ToastContainer />
               <Player />
+              <TabBar />
               <AudioProvider />
             </Router>
           </div>
