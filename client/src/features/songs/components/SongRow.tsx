@@ -7,10 +7,15 @@ import { QueueSong } from 'features/player';
 
 type SongRowProps = {
   song: Song | QueueSong;
+  hidePlayCount: boolean;
   className?: string;
 };
 
-export const SongRow = ({ song, className = '' }: SongRowProps) => {
+export const SongRow = ({
+  song,
+  hidePlayCount,
+  className = '',
+}: SongRowProps) => {
   const dispatch = useAppDispatch();
 
   return (
@@ -18,7 +23,7 @@ export const SongRow = ({ song, className = '' }: SongRowProps) => {
       className={`rounded-md flex cursor-pointer overflow-hidden text-white hover:bg-neutral-800
         ${className}`}
       onClick={() => dispatch(setCurrentSong(song))}>
-      <SongInfo song={song} />
+      <SongInfo song={song} hidePlayCount={hidePlayCount} />
       <div
         className="flex items-end justify-end"
         onClick={(e) => e.stopPropagation()}>

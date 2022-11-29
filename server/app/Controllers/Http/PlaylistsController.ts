@@ -25,7 +25,7 @@ export default class PlaylistsController {
     const playlistSongs = await Database
       .from('playlist_song')
       .select(
-        'playlist_song.song_id',
+        'playlist_song.song_id AS id',
         'playlist_song.location',
         'songs.title',
         'songs.song_url',
