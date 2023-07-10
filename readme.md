@@ -1,6 +1,8 @@
 # Rainify
 Mobile music streaming app for learning purposes
 
+https://github.com/alecdiaz1/rainify/assets/23247241/f2d523da-1396-42a8-ae27-80d515cf31c7
+
 Built using 
 - [react](https://reactjs.org/)
 - [redux](https://redux-toolkit.js.org/)
@@ -19,6 +21,7 @@ Project structure based off [bulletproof-react](https://github.com/alan2207/bull
 4. Run `node ace migration:run`
 5. Run `node ace db:seed`
 6. Start the server with `node ace serve --watch`
+
 
 #### Client
 1. Navigate to `/client`
