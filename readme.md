@@ -1,12 +1,13 @@
 # Rainify
 Mobile music streaming app for learning purposes
 
-https://github.com/alecdiaz1/rainify/assets/23247241/f2d523da-1396-42a8-ae27-80d515cf31c7
 
 Built using 
 - [react](https://reactjs.org/)
 - [redux](https://redux-toolkit.js.org/)
 - [adonis](https://adonisjs.com/)
+
+https://github.com/alecdiaz1/rainify/assets/23247241/f3a13411-25ac-4c7e-a297-d8a325bb1e89
 
 Project structure based off [bulletproof-react](https://github.com/alan2207/bulletproof-react)
 
